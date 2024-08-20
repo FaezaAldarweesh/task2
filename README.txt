@@ -1,30 +1,44 @@
-فكرة عن العمل:
-الملفات التالية تقدم نظام بقوم بالعمليات التالية (إضافة منشور , حذف منشور , تعديل متشور , عرض جميع المنشورات , عرض كافة تفاصيل منشور محدد) مبني بأسلوب oop
+Post Management System
+This project is a simple post management system built with Object-Oriented PHP. The system allows users to perform the following operations:
 
-
-تخطيط العمل :
-1- كلاس Database الصف من نمط abstract من أجل جعله قالب محدد لعمليات التوابع , ترث منه الصفوف الأخرى .
-    يحوي الصف على تابع الأتصال بالداتا + توابع CRUD يتم توصيف تنفيذها ضمن الصفوف الأبناء
-
-2- كلاس post صف يرث من صف القاعدة من أجل توصيف تنفيذ التوابع صمنه 
-    يحوي على تابع باني لإنشاء الاتصال بقاعدة البيانات + توابع لعمليات CRUD + تابع هادم
-    تم استخدام trait من أجل تقل توصيف تنفيذ التوابع إلى توابع ضمن الtrait لتسهيل عملية قرادة الكود و ترتيبه مع إمكانية إعادة استخدام توابع هذا الtrait في صفوف أخرى
-
-3- كلاس Validation من أحل التحقق من القيم المرسلة 
-    استخدمت أسلوب التغليف من أجل عدم الوصول للخصائص مباشرة و التعديل عليها إلا بشروظ محددة 
-      توابع تفيد في تصفية المدخلات من أي تعليمات أو محارف إشارات trim , stripslashes , htmlspecialchars
-      توابع setter من أجل التحقق من القيم و إعادة رسائل الخطأ لعملية الإضافة و التعديل
-
-4- ملف الViews يحوي على صفحات واجهة المستخدم بتنسيق bootstrap , في كل صفحة يتم إنشاء غرض من صف Post و استدعاء التابع المناسب للعملية المطلوبة 
-
-
-تشغيل المشروع
-1- وضع الملف داخل مجلد xampp->htdocs
-2- تشغيل apache + MSQL فس برنامج xampp 
-3-إنشاء قاعدة البيانات في PHPmyadmin باسم blog_db , تعليمات الإنشاء موجودة في ملف blog_db.sql
-4-الذهاب الى الرابط http://localhost/faeza%20aldarweesh%20task_2/views/list_post.php 
-
-
-اللغات المستخدمة:
-back-end : php pure + sql
-front-end : bootstrap      
+Add a Post
+Delete a Post
+Edit a Post
+View All Posts
+View Post Details
+Project Structure
+1. Database Class
+Type: Abstract Class
+Purpose: Serves as a template for database operations. Other classes inherit from this class.
+Includes:
+A method to connect to the database.
+CRUD methods (Create, Read, Update, Delete) that are implemented in the child classes.
+2. Post Class
+Inheritance: Inherits from the Database class.
+Purpose: Implements the CRUD operations specific to posts.
+Includes:
+A constructor for establishing a database connection.
+Methods for CRUD operations.
+A destructor to close the database connection.
+Traits: A trait is used to organize and possibly reuse the methods across other classes, improving code readability and structure.
+3. Validation Class
+Purpose: Handles validation of form inputs.
+Encapsulation: Properties are private, ensuring they cannot be directly accessed or modified without meeting specific conditions.
+Includes:
+Methods to sanitize inputs (e.g., trim, stripslashes, htmlspecialchars).
+Setter methods to validate input values and handle error messages for both adding and editing posts.
+4. Views
+Purpose: Provides the user interface using Bootstrap for styling.
+Includes:
+Pages for adding, editing, viewing, and listing posts.
+Each page creates an instance of the Post class and calls the appropriate method to perform the requested operation.
+How to Run the Project
+Place the project folder in the xampp/htdocs directory.
+Start Apache and MySQL using XAMPP.
+Create the database in PHPMyAdmin:
+Database Name: blog_db
+The SQL script to create the database is included in the blog_db.sql file.
+Access the project by navigating to http://localhost/faeza%20aldarweesh%20task_2/views/list_post.php.
+Technologies Used
+Back-end: PHP, SQL
+Front-end: Bootstrap
