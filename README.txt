@@ -1,4 +1,4 @@
-Post Management System
+**Post Management System**
 This project is a simple post management system built with Object-Oriented PHP. The system allows users to perform the following operations:
 
 Add a Post
